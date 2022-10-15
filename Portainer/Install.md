@@ -14,24 +14,26 @@ First, create the volume that Portainer Server will use to store its database:<p
 `docker volume create portainer_data`
  
 Then, download and install the Portainer Server container:
->`docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
---restart=always \
--v /var/run/docker.sock:/var/run/docker.sock \
--v portainer_data:/data \
-portainer/portainer-ce:latest`
+```bash
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ce:latest
+```
  
-
 Now that the installation is complete, you can log into your Portainer Server instance by opening a web browser and going to:
 https://localhost:9443
 
-# Déploiement avec docker compose
+# Déploiement avec docker-compose
 
-Créer dans le répertoire un fichier docker-compose.portainer.yml :
->`# It is used to deploy the services on which the operation depends
+- Créer dans le répertoire `/products/potainer` un fichier [docker-compose.portainer.yml](./docker-compose.portainer.yml):
+```yaml
+# It is used to deploy the services on which the operation depends
 version: '3.9'
 services:
-  #  Basic environment components
-  # 1.Portainer
+# Basic environment components
+# Portainer
   portainer:
     image: portainer/portainer-ce
     container_name: portainer
@@ -56,16 +58,24 @@ services:
 #  Storage volume
 volumes:
   portainer_data:
-` 
+```
  
-On fait un lien symbolique vers le fichier docker-compose.portainer.yml
+- On fait un lien symbolique vers le fichier [docker-compose.portainer.yml](./docker-compose.portainer.yml)
+```bash
+cd /products/potainer
 ln -s docker-compose.portainer.yml  docker-compose.yml
-Démarrer portainer avec la commande
+```
+## Démarrer portainer avec la commande
+```bash
+cd /products/potainer
 docker-compose up -d
+```
  
-L'accès se fait via http://localhost:9999
+## L'accès se fait via  http://localhost:9999
  
-Arrêter portainer avec la commande à partir du répertoire /mnt/disks/data/newcdp/portainer
-cd /mnt/disks/data/newcdp/portainer
+## Arrêter portainer avec la commande à partir du répertoire 
+```bash
+cd /products/potainer
 docker-compose down
+```
 

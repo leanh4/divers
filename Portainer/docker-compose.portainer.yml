@@ -1,0 +1,30 @@
+# It is used to deploy the services on which the operation depends
+version: '3.9'
+services:
+  #  Basic environment components
+  # 1.Portainer
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 800M
+        reservations:
+          cpus: '0.1'
+          memory: 256M
+    ports:
+      - "9443:9443"
+      - "8000:8000"
+    environment:
+      TZ: Europe/Paris
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Data file mount
+      - portainer_data:/data portainer/portainer-ce # Profile mount
+#  Storage volume
+volumes:
+  portainer_data:
+  

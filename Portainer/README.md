@@ -71,7 +71,7 @@ cd /products/potainer
 docker-compose up -d
 ```
  
-## L'accès se fait via  http://localhost:9999
+## L'accès se fait via  https://localhost:9443
  
 ## Arrêter portainer avec la commande à partir du répertoire 
 ```bash

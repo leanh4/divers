@@ -20,7 +20,7 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/com
 ```
 
 ## Removing docker-compose
-(How To Remove Docker Containers, Images and Volumes)[https://shisho.dev/blog/posts/docker-remove-cheatsheet/]
+[How To Remove Docker Containers, Images and Volumes](https://shisho.dev/blog/posts/docker-remove-cheatsheet/)
 
 Sometimes we want to delete the object created by docker-compose in order to clean the development environment and recreate it from scratch.<p/>
 Below is an example of a command to clean all containers, images, volumes, networks, and undefined containers created with docker-compose.

@@ -76,6 +76,10 @@ docker-compose up -d
 ## Arrêter portainer avec la commande à partir du répertoire 
 ```bash
 cd /products/potainer
-docker-compose down
+docker-compose stop
 ```
-
+## Relancer portainer avec la commande à partir du répertoire 
+```bash
+cd /products/potainer
+docker-compose start
+```

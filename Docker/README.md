@@ -37,3 +37,7 @@ docker-compose down --rmi all -v --remove-orphans
 - `--remove-orphans` Remove containers not defined in `docker-compose.yml`
 
 Therefore, this command example removes containers, images, volumes, networks, and undefined containers.
+
+## Commandes utiles
+- List des ports exposés de tous les containers sur le host (cf. [docker container ls](https://manpages.ubuntu.com/manpages/bionic/man1/docker-container-ls.1.html)) <p/>
+`docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a`

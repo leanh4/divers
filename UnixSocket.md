@@ -28,3 +28,20 @@ echo isro  | nc <zookeeper ip> 2181
 ```
 One other way would be to use 4 letter commands to validate if zookeeper service is healthy or not
 More details on the documentation link below https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html#sc_zkCommands
+
+### Docker
+[cf . Docker Socket File for IPC](https://lobster1234.github.io/2019/04/05/docker-socket-file-for-ipc/=)
+#### - Socat version
+```bash 
+echo -e "GET /images/json HTTP/1.1\r\n" | socat unix-connect:/var/run/docker.sock STDIO
+```
+
+#### - nc version (netcat-freebsd)
+```bash 
+echo -e "GET /images/json HTTP/1.0\r\n" | nc -U /var/run/docker.sock
+```
+#### - curl
+```bash 
+curl --unix-socket /var/run/docker.sock http:/images/json
+```
+
